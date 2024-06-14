@@ -21,7 +21,7 @@
     #fullscreen-button {
       position: absolute;
       top: 10px;
-      right: 10px;
+      left: 10px; /* Ajustado para posicionar a la izquierda */
       padding: 10px;
       background-color: #333;
       color: #fff;
@@ -81,10 +81,6 @@
         video.addEventListener('play', () => {
           fullscreenButton.style.display = 'none';
         });
-
-        // Alinear el botón de pantalla completa a la derecha
-        fullscreenButton.style.left = 'auto';
-        fullscreenButton.style.right = '10px';
 
       } catch (error) {
         console.error('Error loading video:', error);
