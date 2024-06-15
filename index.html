@@ -31,7 +31,7 @@
       try {
         await shaka.polyfill.installAll();
         if (!shaka.Player.isBrowserSupported()) {
-          throw new Error('Browser not supported');{"b52a7fa91fb031a3d6f2a505414b6fcd':'a655a22f9c0a66574b5d95dee212fbf9"}7
+          throw new Error('Browser not supported');
         }
 
         const video = document.getElementById('video');
@@ -41,23 +41,13 @@
           clearKeys: {
             'b52a7fa91fb031a3d6f2a505414b6fcd':'a655a22f9c0a66574b5d95dee212fbf9'
           }
-       
-	   
-	   
-	   
-	   eyJiNTJhN2ZhOTFmYjAzMWEzZDZmMmE1MDU0MTRiNmZjZCc6J2E2NTVhMjJmOWMwYTY2NTc0YjVkOTVkZWUyMTJmYmY5In03
+        };
 
-tigo que funciona
-https://sam-py-edge02.tigo.com.py/VMX4_widevine/rolling-buffer/TigoSportsHD/TigoSportsHD/transmux/index.mpd?ck=eyJiNTJhN2ZhOTFmYjAzMWEzZDZmMmE1MDU0MTRiNmZjZCc6J2E2NTVhMjJmOWMwYTY2NTc0YjVkOTVkZWUyMTJmYmY5In03
-	   
-	   
-	   
-	   
         await player.configure({
           drm: drmConfig
         });
 
-        await player.load('https://sam-py-edge02.tigo.com.py/VMX4_widevine/rolling-buffer/TigoSportsHD/TigoSportsHD/transmux/index.mpd');
+        await player.load('https://sam-py-edge02.tigo.com.py/VMX4_widevine/rolling-buffer/TigoSportsHD/TigoSportsHD/transmux/index.m3u8?ccur_fmt_type=fmp4');
 
         console.log('Video loaded successfully!');
       } catch (error) {
