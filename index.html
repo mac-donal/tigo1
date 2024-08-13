@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
 <title>CERRO PLAY </title>
-<link rel="alternate" type="application/rss+xml" title="TV ONLINE  &raquo; Feed" href="https://paraguayplay.net/feed/" />
-<link rel="alternate" type="application/rss+xml" title="TV ONLINE  &raquo; Feed de los comentarios" href="https://paraguayplay.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CERRO PLAY  &raquo; Feed" href="https://paraguayplay.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CERRO PLAY  &raquo; Feed de los comentarios" href="https://paraguayplay.net/comments/feed/" />
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/paraguayplay.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.5"}};
 /*! This file is auto-generated */
@@ -456,10 +456,36 @@ body {
 <script src="//ssl.p.jwpcdn.com/player/v/8.21.1/jwplayer.js"></script>
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
  window.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Bloquea el menú contextual (clic derecho)
+            window.location.href = ''; // Redirige a tu web principal si alguien intenta hacer clic derecho
+        });
 
+        window.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 123)) { // Ctrl+U, Ctrl+S, F12
+                e.preventDefault(); // Bloquea Ctrl+U, Ctrl+S, F12
+                window.location.href = ''; // Redirige a tu web principal si alguien intenta usar estas combinaciones de teclas
+            }
+        });
 
+        window.addEventListener('keyup', function (e) {
+            if (e.keyCode === 123) { // F12 (suelta la tecla)
+                window.location.href = ''; // Redirige a tu web principal si alguien intenta usar F12
+            }
+        });
 
+        window.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
+                e.preventDefault(); // Bloquea Ctrl+Shift+I
+                window.location.href = ''; // Redirige a tu web principal si alguien intenta usar esta combinación de teclas
+            }
+        });
 
+        window.addEventListener('keypress', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { // Ctrl+Shift+C
+                e.preventDefault(); // Bloquea Ctrl+Shift+C
+                window.location.href = ''; // Redirige a tu web principal si alguien intenta usar esta combinación de teclas
+            }
+        });
 
         debugger; // Detiene la ejecución para depurar
 </script>
@@ -471,7 +497,7 @@ body {
     playerInstance.setup({
 
         playlist: [{
-            "title": "DALE PLAY",
+            "title": "DALE PAY",
            "image": "",
           "description": "EN VIVO",
             "sources": [
@@ -509,4 +535,4 @@ body {
 
 
 
-
+</html>
