@@ -1,95 +1,237 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Canales</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #1a1a2e; /* Fondo azul oscuro */
-            color: #fff; /* Texto blanco para contraste */
-        }
-        .canal {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer; /* Indicar que es clickeable */
-        }
-        .canal img {
-            width: 50px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .canal a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-        }
-        .canal a:hover {
-            text-decoration: underline;
-        }
-    </style>
-    <script>
-        function abrirEnlace(url) {
-            window.location.href = url; // Redirigir en la misma pestaña
-        }
-    </script>
+    <title>Backup Series</title>
 </head>
+<style>
+    body {
+        background-color: #1c1c1e; /* Color de fondo en modo oscuro */
+        color: #ffffff; /* Color de texto en modo oscuro */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #poster-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px; /* Agregamos bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregamos sombra suave */
+    }
+
+    input[type="text"],
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    input[type="text"] {
+        background-color: #2c2c2e; /* Color de fondo para el campo de búsqueda */
+        color: #ffffff; /* Color de texto en modo oscuro */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregamos sombra suave */
+    }
+
+    button {
+        background-color: #007aff; /* Color de fondo para el botón */
+        color: #ffffff; /* Color de texto en modo oscuro */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Color de fondo para el botón al pasar el ratón */
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        background-color: #007aff;
+        color: #ffffff;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 0 5px;
+    }
+
+    .pagination button:hover {
+        background-color: #0056b3;
+    }
+
+    .pagination button.active {
+        background-color: #0056b3;
+    }
+</style>
 <body>
-
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=eventos9')">
-        <img src="https://i.ibb.co/XfnYf1JL/Tigo-Sports-2025.webp" alt="WEB">
-        <a href="#">TIGO SPORTS</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
+    <div>
+        <input type="text" id="search-input" placeholder="Search by series name">
+        <button id="search-button">Search</button>
     </div>
-    
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=tntsports')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png" alt="WEB">
-        <a href="#">TNT Sports</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
+    <div id="poster-container"></div>
+
+    <div class="pagination">
+        <button id="prev-button">Prev</button>
+        <button id="next-button">Next</button>
     </div>
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=dsports')">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Hd5qv0jKR_JW3tcIl0a8y0G0PCyEip_K8w&s" alt="Dsports">
-        <a href="#">Dsports</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+    <script>
+        async function getMovieOrTVShowDetailsById(mediaId) {
+            const apiKey = "242e044e9ed025098133698da4df3b87";
+            const language = "es";
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=dsports2')">
-        <img src="https://tudeportetv1.com/img/dsports2.webp" alt="Dsports 2">
-        <a href="#">Dsports 2</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+            const baseUrl = `https://api.themoviedb.org/3/tv/${mediaId}`;
+            const url = new URL(baseUrl);
+            url.searchParams.append("api_key", apiKey);
+            url.searchParams.append("language", language);
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=dsportsplus')">
-        <img src="https://d18o29lhcg4kda.cloudfront.net/fit-in/360x270/Y2gwMTAwMDAwMDAwMTM5X2xpbmVhcl9jaGFubmVsX3NzbGE_11002_LOGO_360x270.png?timestamp=1738048336416" alt="Dsports +">
-        <a href="#">Dsports +</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=espn')">
-        <img src="https://1000marcas.net/wp-content/uploads/2020/02/logo-ESPN.png" alt="ESPN 1">
-        <a href="#">ESPN 1</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data: ${response.statusText}`);
+            }
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=winsports')">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXPAJdIblZ9f_AfIEb7_nvBVF5teMZonZ0LA&s" alt="ESPN 2">
-        <a href="#">ESPN 2</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+            const data = await response.json();
+            return data;
+        }
 
-    <div class="canal" onclick="abrirEnlace('https://streamtp2.com/global1.php?stream=vtvplus')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/VTV_Plus_2020.webp" alt="VTV +">
-        <a href="#">VTV +</a>
-        <span style="color:green; margin-left: 10px;">WEB</span>
-    </div>
+        async function fetchAndDisplayPoster(identifier) {
+    const folderPath = './series';
 
+    try {
+        let tvDetails;
+        if (!isNaN(identifier)) {
+            console.log("Fetching details for media ID:", identifier);
+            tvDetails = await getMovieOrTVShowDetailsById(identifier);
+        } else {
+            console.log("Searching for series with name:", identifier);
+            // Aquí debes implementar la lógica para buscar por nombre de serie
+            // Puedes usar la misma API o buscar en tu base de datos local
+            const response = await fetch(`${folderPath}/${identifier}.html`);
+            const text = await response.text();
+            const parser = new DOMParser();
+            const htmlDocument = parser.parseFromString(text, 'text/html');
+            const seriesName = htmlDocument.querySelector('h1');
+            tvDetails = { name: seriesName ? seriesName.textContent.trim() : '' };
+        }
+
+        const posterPath = `https://image.tmdb.org/t/p/w500${tvDetails.poster_path}`;
+
+        const poster = document.createElement('img');
+        poster.src = posterPath;
+        poster.alt = tvDetails.name;
+
+        const posterContainer = document.getElementById('poster-container');
+        const posterWrapper = document.createElement('div');
+        posterWrapper.classList.add('poster-wrapper');
+        posterWrapper.appendChild(poster);
+
+        const seriesName = document.createElement('p');
+        seriesName.textContent = tvDetails.name;
+        posterWrapper.appendChild(seriesName);
+
+       posterContainer.appendChild(posterWrapper);
+
+        // Construir la ruta del archivo HTML solo con el ID
+        const filePath = `${folderPath}/${identifier}`;
+
+        // Agregar evento click al póster para abrir el archivo HTML
+        poster.addEventListener('click', () => {
+            window.open(`${filePath}.html`, '_blank');
+        });
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+        async function fetchAndDisplayPostersFromFolder(folderPath, page, pageSize) {
+            try {
+                const response = await fetch(folderPath);
+                const text = await response.text();
+
+                // Parsear la respuesta como HTML y extraer los enlaces a los archivos
+                const parser = new DOMParser();
+                const htmlDocument = parser.parseFromString(text, 'text/html');
+                const links = htmlDocument.querySelectorAll('a[href$=".html"]');
+
+                const startIndex = (page - 1) * pageSize;
+                const endIndex = startIndex + pageSize;
+                const linksToDisplay = Array.from(links).slice(startIndex, endIndex);
+
+                for (const link of linksToDisplay) {
+                    const url = link.getAttribute('href');
+                    const fileName = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+                    console.log("Fetching details for media ID:", fileName);
+                    await fetchAndDisplayPoster(fileName);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        const seriesFolderPath = './series'; // Ruta del directorio de series
+        const pageSize = 20; // Tamaño de página
+        let currentPage = 1; // Página actual
+
+        fetchAndDisplayPostersFromFolder(seriesFolderPath, currentPage, pageSize);
+
+        const searchButton = document.getElementById('search-button');
+        const searchInput = document.getElementById('search-input');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        searchButton.addEventListener('click', async () => {
+            const searchTerm = searchInput.value.trim();
+
+            if (searchTerm !== '') {
+                await fetchAndDisplayPoster(searchTerm);
+            }
+        });
+
+        prevButton.addEventListener('click', async () => {
+            if (currentPage > 1) {
+                currentPage--;
+                document.getElementById('poster-container').innerHTML = '';
+                fetchAndDisplayPostersFromFolder(seriesFolderPath, currentPage, pageSize);
+            }
+        });
+
+        nextButton.addEventListener('click', async () => {
+            currentPage++;
+            document.getElementById('poster-container').innerHTML = '';
+            fetchAndDisplayPostersFromFolder(seriesFolderPath, currentPage, pageSize);
+        });
+
+
+
+        
+
+    </script>
 </body>
 </html>
