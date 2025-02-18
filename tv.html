@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Live</title>
+    <link rel="stylesheet" href="stylestv.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1 class="tv-title">TV Live</h1>
+
+      <div class="content-container">
+        <!-- Contenedor de Canales Frecuentes -->
+        <div class="block-container">
+          <h2 class="block-title">Canales Frecuentes</h2>
+          <div class="grid-container" id="frequent-channels">
+            <div class="card" tabindex="0" data-link="go:atv">
+              <img src="img/CANAL ATV.jpg" alt="Canal 1" />
+            </div>
+            <div class="card" tabindex="0" data-link="./canal/cosmos-tv.html">
+              <img src="img/CANAL COSMOS TV.jpg" alt="Canal 2" />
+            </div>
+            <div class="card" tabindex="0" data-link="canal3.html">
+              <img src="canal3.jpg" alt="Canal 3" />
+            </div>
+            <div class="card" tabindex="0" data-link="canal4.html">
+              <img src="canal4.jpg" alt="Canal 4" />
+            </div>
+            <div class="card" tabindex="0" data-link="canal5.html">
+              <img src="canal5.jpg" alt="Canal 5" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor de Colección -->
+        <div class="block-container" style="margin-top: 3%">
+          <h2 class="block-title">Colección</h2>
+          <div class="grid-container" id="collection">
+            <div class="card" data-link="canalestwitch.html">
+              <img
+                src="https://variety.com/wp-content/uploads/2015/03/twitch-logo.jpg"
+                alt="Card Image 1"
+              />
+              <div class="card-title">Canal Twitch</div>
+            </div>
+            <div class="card">
+              <img src="example2.jpg" alt="Card Image 2" />
+              <div class="card-title">Card Title 2</div>
+            </div>
+            <div class="card">
+              <img src="example3.jpg" alt="Card Image 3" />
+              <div class="card-title">Card Title 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripttv.js"></script>
+  </body>
+</html>

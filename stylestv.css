@@ -1,0 +1,191 @@
+/* General */
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #121124;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-container {
+  padding: 20px;
+}
+
+/* Main Container */
+.main-container {
+  width: 100%;
+  margin: 0 0 0 50px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+/* Titles */
+.tv-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.block-title {
+  font-size: 1.2rem;
+  text-align: left;
+  margin: 0 0 10px 10px;
+}
+
+/* Grid for Blocks */
+.grid-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-items: stretch;
+}
+
+/* General Cards */
+.card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, background-color 0.3s;
+  cursor: pointer;
+}
+
+/* Frequent Channels Cards */
+#frequent-channels .card {
+  aspect-ratio: 1.7 / 1;
+}
+
+#frequent-channels .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Collection Cards */
+#collection .card {
+  aspect-ratio: 2 / 1;
+}
+
+#collection .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Title Overlay */
+#collection .card .card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#collection .card:hover img {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+#collection .card:hover .card-title {
+  opacity: 1;
+  transform: translateY(0); /* Slide up into view */
+}
+
+/* Hover and Focus Effects */
+.card:hover,
+.card:focus {
+  transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 720px) {
+  /* Ajustar contenedor principal */
+  .main-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    height: auto; /* Permitir scroll si es necesario */
+  }
+
+  /* Ajustar títulos */
+  .tv-title {
+    font-size: 1.2rem;
+    margin: 8px 0;
+  }
+
+  .block-title {
+    font-size: 1rem;
+    margin: 0 0 8px 8px;
+  }
+
+  /* Ajustar rejilla */
+  .grid-container {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Reducir tamaño mínimo */
+  }
+
+  /* Ajustar tarjetas generales */
+  .card {
+    border-radius: 8px; /* Reducir el radio */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Ajustar tarjetas frecuentes */
+  #frequent-channels .card {
+    aspect-ratio: 2 / 1; /* Ajustar relación de aspecto */
+  }
+
+  #frequent-channels .card img {
+    object-fit: cover; /* Ajustar tamaño de la imagen */
+  }
+
+  /* Ajustar tarjetas de colección */
+  #collection .card {
+    aspect-ratio: 16 / 9; /* Relación de aspecto más común */
+  }
+
+  #collection .card img {
+    object-fit: cover;
+    transform: scale(1); /* Sin zoom por defecto */
+  }
+
+  #collection .card .card-title {
+    font-size: 0.9rem;
+    padding: 8px;
+    transform: translateY(110%); /* Ajustar posición inicial */
+  }
+
+  #collection .card:hover img {
+    transform: scale(1.05); /* Efecto de zoom moderado */
+  }
+
+  #collection .card:hover .card-title {
+    transform: translateY(0); /* Mostrar título */
+  }
+
+  /* Ajustar efectos hover y focus */
+  .card:hover,
+  .card:focus {
+    transform: scale(1.03); /* Menor efecto de escala */
+  }
+
+  /* Ajustar contenedor de imágenes de fondo */
+  #background-section {
+    background-position: center center;
+    background-size: cover;
+    height: 50vh; /* Reducir altura para dispositivos más pequeños */
+  }
+}
+
